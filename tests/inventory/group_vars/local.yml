@@ -1,0 +1,5 @@
+---
+inv_add_ldap_account_auth_ldap_secret: "my secret"
+inv_add_ldap_account_auth_ldap_base: "dc=example,dc=tld"
+inv_add_ldap_account_auth_ldap_address: "my.ldap.tld"
+inv_add_ldap_account_auth_ldap_rootbinddn: "cn=root,{{ inv_add_ldap_account_auth_ldap_base }}"

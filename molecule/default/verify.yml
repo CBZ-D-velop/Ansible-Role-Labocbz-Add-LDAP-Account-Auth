@@ -1,0 +1,22 @@
+---
+# Don't forget to keep this file updated
+# molecule/<scenario>/verify.yml
+- name: "Verify"
+  hosts: "all"
+  gather_facts: false
+  tasks:
+
+    - name: "Check files and tempated files"
+      loop:
+        - "/etc/libnss-ldap.conf"
+        - "/etc/libnss-ldap.secret"
+        - "/etc/pam.d/common-password"
+        - "/etc/pam.d/common-session"
+        - "/etc/pam.d/common-auth"
+        - "/etc/nsswitch.conf"
+      loop_control:
+        loop_var: file
+      register: file_check
+      failed_when: not file_check.stat.exists
+      ansible.builtin.stat:
+        path: "{{ file }}"

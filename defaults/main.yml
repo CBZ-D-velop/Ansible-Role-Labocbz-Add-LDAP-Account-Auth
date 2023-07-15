@@ -1,0 +1,8 @@
+---
+add_ldap_account_auth_ldap_base: "dc=example,dc=tld"
+add_ldap_account_auth_ldap_protocol: "ldap"
+add_ldap_account_auth_ldap_address: "my.ldap.tld"
+add_ldap_account_auth_ldap_port: 389
+add_ldap_account_auth_ldap_version: 3
+add_ldap_account_auth_ldap_rootbinddn: "cn=root,{{ add_ldap_account_auth_ldap_base }}"
+add_ldap_account_auth_ldap_secret: "my secret"

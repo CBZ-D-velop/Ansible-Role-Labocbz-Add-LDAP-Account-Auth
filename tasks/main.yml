@@ -1,0 +1,48 @@
+---
+- name: "Install packages"
+  ansible.builtin.package:
+    update_cache: yes
+    name:
+      - libnss-ldap
+      - libpam-ldap
+      - ldap-utils
+
+- name: "Templating files"
+  block:
+    - name: "Import libnss-ldap.conf configuration"
+      ansible.builtin.template:
+        src: "templates/libnss-ldap.conf.j2"
+        dest: "/etc/libnss-ldap.conf"
+        mode: 0644
+
+    - name: "Import libnss-ldap.secret configuration"
+      ansible.builtin.template:
+        src: "templates/libnss-ldap.secret.j2"
+        dest: "/etc/libnss-ldap.secret"
+        mode: 0600
+
+- name: "Import files"
+  block:
+    - name: "Import common-password configuration"
+      ansible.builtin.copy:
+        src: "files/common-password"
+        dest: "/etc/pam.d/common-password"
+        mode: 0644
+
+    - name: "Import common-session configuration"
+      ansible.builtin.copy:
+        src: "files/common-session"
+        dest: "/etc/pam.d/common-session"
+        mode: 0644
+
+    - name: "Import common-auth configuration"
+      ansible.builtin.copy:
+        src: "files/common-auth"
+        dest: "/etc/pam.d/common-auth"
+        mode: 0644
+
+    - name: "Import nsswitch.conf configuration"
+      ansible.builtin.copy:
+        src: "files/nsswitch.conf"
+        dest: "/etc/nsswitch.conf"
+        mode: 0644

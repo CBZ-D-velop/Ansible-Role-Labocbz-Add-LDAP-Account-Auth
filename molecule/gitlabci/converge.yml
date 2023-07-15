@@ -1,0 +1,21 @@
+---
+- name: "Converge"
+  hosts: "all"
+  tasks:
+    # replace these tasks with whatever you find suitable to test
+    - name: "Copy something to test use of synchronize module"
+      ansible.builtin.copy:
+        src: "/etc/hosts"
+        dest: "/tmp/hosts-from-controller"
+        mode: 0700
+
+    - name: "Include labocbz.add_ldap_account_auth"
+      tags:
+        - "labocbz.add_ldap_account_auth"
+      vars:
+        add_ldap_account_auth_ldap_secret: "{{ inv_add_ldap_account_auth_ldap_secret }}"
+        add_ldap_account_auth_ldap_base: "{{ inv_add_ldap_account_auth_ldap_base }}"
+        add_ldap_account_auth_ldap_address: "{{ inv_add_ldap_account_auth_ldap_address }}"
+        add_ldap_account_auth_ldap_rootbinddn: "{{ inv_add_ldap_account_auth_ldap_rootbinddn }}"
+      ansible.builtin.include_role:
+        name: "labocbz.add_ldap_account_auth"
