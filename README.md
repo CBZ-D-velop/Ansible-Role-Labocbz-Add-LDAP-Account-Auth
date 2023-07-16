@@ -18,6 +18,14 @@
 
 An Ansible role to add a LDAP account auth method on your host.
 
+The Ansible role installs the necessary libraries to set up an LDAP account authentication system for managing user accounts. By configuring a system with this role, users can log in to the machine if their account exists in the specified LDAP directory.
+
+The role simplifies the implementation of LDAP-based authentication, providing a seamless and secure method for user authentication across the system. By defining the LDAP base, protocol, server address, port, version, rootbinddn, and secret, administrators can tailor the role to the specific LDAP environment.
+
+It is essential to note that the role focuses solely on client-side components for LDAP authentication. As such, it does not handle server installation or the management of group hierarchies. The role's primary purpose is to facilitate LDAP queries and authentication requests to validate user credentials against the specified LDAP server.
+
+In summary, the LDAP account authentication role streamlines the installation of necessary libraries to enable LDAP-based authentication on the system. By configuring the appropriate LDAP parameters, administrators can leverage a centralized and secure method for user authentication, enhancing system access controls and providing a more efficient and streamlined authentication process for users.
+
 ## Folder structure
 
 By default Ansible will look in each directory within a role for a main.yml file for relevant content (also man.yml and main):
