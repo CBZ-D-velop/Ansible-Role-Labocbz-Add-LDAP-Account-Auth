@@ -1,5 +1,6 @@
 ---
-inv_add_ldap_account_auth_ldap_secret: "my secret"
-inv_add_ldap_account_auth_ldap_base: "dc=example,dc=tld"
-inv_add_ldap_account_auth_ldap_address: "my.ldap.tld"
-inv_add_ldap_account_auth_ldap_rootbinddn: "cn=root,{{ inv_add_ldap_account_auth_ldap_base }}"
+inv_add_ldap_account_auth_ldap_secret: "20XbE@j&*1N4GAj@"
+inv_add_ldap_account_auth_ldap_base: "uid=admin,ou=system"
+inv_add_ldap_account_auth_ldap_address: "172.17.0.4"
+inv_add_ldap_account_auth_ldap_rootbinddn: "{{ inv_add_ldap_account_auth_ldap_base }}"
+inv_add_ldap_account_auth_ldap_port: 10389
