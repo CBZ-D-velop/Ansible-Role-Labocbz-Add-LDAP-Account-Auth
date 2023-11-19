@@ -17,5 +17,6 @@
         add_ldap_account_auth_ldap_base: "{{ inv_add_ldap_account_auth_ldap_base }}"
         add_ldap_account_auth_ldap_address: "{{ inv_add_ldap_account_auth_ldap_address }}"
         add_ldap_account_auth_ldap_rootbinddn: "{{ inv_add_ldap_account_auth_ldap_rootbinddn }}"
+        add_ldap_account_auth_ldap_port: "{{ inv_add_ldap_account_auth_ldap_port }}"
       ansible.builtin.include_role:
         name: "labocbz.add_ldap_account_auth"
