@@ -109,13 +109,13 @@ Some vars a required to run this role:
 
 ```YAML
 ---
-add_ldap_account_auth_ldap_base: "dc=example,dc=tld"
-add_ldap_account_auth_ldap_protocol: "ldap"
-add_ldap_account_auth_ldap_address: "my.ldap.tld"
-add_ldap_account_auth_ldap_port: 389
-add_ldap_account_auth_ldap_version: 3
-add_ldap_account_auth_ldap_rootbinddn: "cn=root,{{ add_ldap_account_auth_ldap_base }}"
-add_ldap_account_auth_ldap_secret: "my secret"
+add_ldap_account_auth__ldap_base: "dc=example,dc=tld"
+add_ldap_account_auth__ldap_protocol: "ldap"
+add_ldap_account_auth__ldap_address: "my.ldap.tld"
+add_ldap_account_auth__ldap_port: 389
+add_ldap_account_auth__ldap_version: 3
+add_ldap_account_auth__ldap_rootbinddn: "cn=root,{{ add_ldap_account_auth__ldap_base }}"
+add_ldap_account_auth__ldap_secret: "my secret"
 
 ```
 
@@ -128,10 +128,13 @@ In order to surchage vars, you have multiples possibilities but for mains cases 
 ```YAML
 # From inventory
 ---
-inv_add_ldap_account_auth_ldap_secret: "my secret"
-inv_add_ldap_account_auth_ldap_base: "dc=example,dc=tld"
-inv_add_ldap_account_auth_ldap_address: "my.ldap.tld"
-inv_add_ldap_account_auth_ldap_rootbinddn: "cn=root,{{ inv_add_ldap_account_auth_ldap_base }}"
+inv_add_ldap_account_auth__ldap_secret: "20XbE@j&*1N4GAj@"
+inv_add_ldap_account_auth__ldap_base: "uid=admin,ou=system"
+inv_add_ldap_account_auth__ldap_address: "172.17.0.4"
+inv_add_ldap_account_auth__ldap_rootbinddn: "{{ inv_add_ldap_account_auth__ldap_base }}"
+inv_add_ldap_account_auth__ldap_port: 10389
+inv_add_ldap_account_auth__ldap_protocol: "ldap"
+inv_add_ldap_account_auth__ldap_version: 3
 
 ```
 
@@ -147,14 +150,15 @@ To run this role, you can copy the molecule/default/converge.yml playbook and ad
 
 ```YAML
 - name: "Include labocbz.add_ldap_account_auth"
-    tags:
+  tags:
     - "labocbz.add_ldap_account_auth"
-    vars:
-    add_ldap_account_auth_ldap_secret: "{{ inv_add_ldap_account_auth_ldap_secret }}"
-    add_ldap_account_auth_ldap_base: "{{ inv_add_ldap_account_auth_ldap_base }}"
-    add_ldap_account_auth_ldap_address: "{{ inv_add_ldap_account_auth_ldap_address }}"
-    add_ldap_account_auth_ldap_rootbinddn: "{{ inv_add_ldap_account_auth_ldap_rootbinddn }}"
-    ansible.builtin.include_role:
+  vars:
+    add_ldap_account_auth__ldap_secret: "{{ inv_add_ldap_account_auth__ldap_secret }}"
+    add_ldap_account_auth__ldap_base: "{{ inv_add_ldap_account_auth__ldap_base }}"
+    add_ldap_account_auth__ldap_address: "{{ inv_add_ldap_account_auth__ldap_address }}"
+    add_ldap_account_auth__ldap_rootbinddn: "{{ inv_add_ldap_account_auth__ldap_rootbinddn }}"
+    add_ldap_account_auth__ldap_port: "{{ inv_add_ldap_account_auth__ldap_port }}"
+  ansible.builtin.include_role:
     name: "labocbz.add_ldap_account_auth"
 ```
 
@@ -172,6 +176,15 @@ Here you can put your change to keep a trace of your work and decisions.
 * Molecule now use remote Docker image by Lord Robin Crombez
 * Molecule now use custom Docker image in CI/CD by env vars
 * New CICD with needs and optimization
+
+### 2024-02-22: New CICD and fixes
+
+* Added support for Ubuntu 22
+* Added support for Debian 11/22
+* Edited vars for linting (role name and __)
+* Fix idempotency
+* New CI, need work on tag and releases
+* CI use now Sonarqube
 
 ## Authors
 

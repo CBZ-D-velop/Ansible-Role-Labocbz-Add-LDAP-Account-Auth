@@ -14,12 +14,16 @@
         src: "templates/libnss-ldap.conf.j2"
         dest: "/etc/libnss-ldap.conf"
         mode: "0644"
+        owner: "root"
+        group: "root"
 
     - name: "Import libnss-ldap.secret configuration"
       ansible.builtin.template:
         src: "templates/libnss-ldap.secret.j2"
         dest: "/etc/libnss-ldap.secret"
         mode: "0600"
+        owner: "root"
+        group: "root"
 
 - name: "Import files"
   block:
@@ -28,21 +32,29 @@
         src: "files/common-password"
         dest: "/etc/pam.d/common-password"
         mode: "0644"
+        owner: "root"
+        group: "root"
 
     - name: "Import common-session configuration"
       ansible.builtin.copy:
         src: "files/common-session"
         dest: "/etc/pam.d/common-session"
         mode: "0644"
+        owner: "root"
+        group: "root"
 
     - name: "Import common-auth configuration"
       ansible.builtin.copy:
         src: "files/common-auth"
         dest: "/etc/pam.d/common-auth"
         mode: "0644"
+        owner: "root"
+        group: "root"
 
     - name: "Import nsswitch.conf configuration"
       ansible.builtin.copy:
         src: "files/nsswitch.conf"
         dest: "/etc/nsswitch.conf"
         mode: "0644"
+        owner: "root"
+        group: "root"

@@ -1,0 +1,8 @@
+---
+inv_add_ldap_account_auth__ldap_secret: "20XbE@j&*1N4GAj@"
+inv_add_ldap_account_auth__ldap_base: "uid=admin,ou=system"
+inv_add_ldap_account_auth__ldap_address: "172.17.0.4"
+inv_add_ldap_account_auth__ldap_rootbinddn: "{{ inv_add_ldap_account_auth__ldap_base }}"
+inv_add_ldap_account_auth__ldap_port: 10389
+inv_add_ldap_account_auth__ldap_protocol: "ldap"
+inv_add_ldap_account_auth__ldap_version: 3
