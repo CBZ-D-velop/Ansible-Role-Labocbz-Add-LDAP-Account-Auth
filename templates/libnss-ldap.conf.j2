@@ -27,10 +27,10 @@
 #host 127.0.0.1
 
 # The distinguished name of the search base.
-base {{ add_ldap_account_auth_ldap_base }}
+base {{ add_ldap_account_auth__ldap_base }}
 
 # Another way to specify your LDAP server is to provide an
-uri {{ add_ldap_account_auth_ldap_protocol }}://{{ add_ldap_account_auth_ldap_address }}:{{ add_ldap_account_auth_ldap_port }}
+uri {{ add_ldap_account_auth__ldap_protocol }}://{{ add_ldap_account_auth__ldap_address }}:{{ add_ldap_account_auth__ldap_port }}
 # Unix Domain Sockets to connect to a local LDAP Server.
 #uri ldap://127.0.0.1/
 #uri ldaps://127.0.0.1/   
@@ -39,7 +39,7 @@ uri {{ add_ldap_account_auth_ldap_protocol }}://{{ add_ldap_account_auth_ldap_ad
 
 # The LDAP version to use (defaults to 3
 # if supported by client library)
-version {{ add_ldap_account_auth_ldap_version }}
+version {{ add_ldap_account_auth__ldap_version }}
 
 # The distinguished name to bind to the server with.
 # Optional: default is to bind anonymously.
@@ -56,7 +56,7 @@ version {{ add_ldap_account_auth_ldap_version }}
 # stored in /etc/libnss-ldap.secret (mode 600)
 # Use 'echo -n "mypassword" > /etc/libnss-ldap.secret' instead
 # of an editor to create the file.
-rootbinddn {{ add_ldap_account_auth_ldap_rootbinddn }}
+rootbinddn {{ add_ldap_account_auth__ldap_rootbinddn }}
 
 # The port.
 # Optional: default is 389.
